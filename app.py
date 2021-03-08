@@ -20,7 +20,7 @@ class Scraper:
         num = 0
         for i in self.headlines:
             for topic in topics:
-                if topic in i:
+                if topic.lower() in i.lower():
                     num += 1
 
         precentage = (num / len(self.headlines)) * 100
@@ -28,5 +28,5 @@ class Scraper:
            
 scrape = Scraper('https://www.nytimes.com/international/')
 scrape.scrape()
-test = ["corona"]
+test = ["Corona", "Pandemic", "Covid"]
 scrape.calculate_precentage(test)
