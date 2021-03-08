@@ -13,7 +13,7 @@ class Scraper:
         parser = "html.parser"
         sp = BeautifulSoup(html, parser)
         for tag in sp.find_all("a"):
-            url = tag.get("href")
+            url = tag.getText()
             self.headlines.append(url)
             
     def calculate_precentage(self, topics):
@@ -28,5 +28,5 @@ class Scraper:
            
 scrape = Scraper('https://www.nytimes.com/international/')
 scrape.scrape()
-test = ["Corona", "Pandemic", "Covid"]
+test = ["Vaccine"]
 scrape.calculate_precentage(test)
