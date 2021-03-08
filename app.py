@@ -1,11 +1,12 @@
 import urllib.request
 from bs4 import BeautifulSoup
+import numpy as np
 
 
 class Scraper:
     def __init__(self, site):
         self.site = site
-        self.headlines = []
+        self.headlines = np.array([])
 
     def scrape(self):
         r = urllib.request.urlopen(self.site)
@@ -14,7 +15,7 @@ class Scraper:
         sp = BeautifulSoup(html, parser)
         for tag in sp.find_all("a"):
             url = tag.getText()
-            self.headlines.append(url)
+            self.headlines = np.append(self.headlines, url)
             
     def calculate_precentage(self, topics):
         num = 0
