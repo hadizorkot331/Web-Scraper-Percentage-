@@ -1,7 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-headlines = []
 
 class Scraper:
     def __init__(self, site):
@@ -16,6 +15,7 @@ class Scraper:
         for tag in sp.find_all("a"):
             url = tag.get("href")
             self.headlines.append(url)
+            
     def calculate_precentage(self, topics):
         num = 0
         for i in self.headlines:
